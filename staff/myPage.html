@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Page | CRIMSON</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="myPage.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="flex items-center gap-3">
+                <a href="staff_dashboard.html" class="icon-btn" title="Close"><i class="fa-solid fa-xmark"></i></a>
+                <h1 style="font-family: 'Bungee', sans-serif; font-weight: 700; color: #561C24; font-size: 1.525rem; line-height: 1.2; letter-spacing: -0.025em;">CRIM<span style="color: #881337;">SON</span></h1>
+            </div>
+            <div class="profile-btn">
+                <div class="avatar-wrapper">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop" 
+                             alt="Alex Rivera" 
+                             class="avatar-img">
+                    <span class="online-status"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Creator Grid Layout -->
+    <div class="creator-wrapper">
+        
+        <!-- Left Setup Sidebar -->
+        <aside class="creator-sidebar">
+            <div>
+                <h1 class="creator-title" style="font-family: 'Bungee', sans-serif; font-weight: 700; color: #000000; font-size: 1.525rem; line-height: 1.2; letter-spacing: -0.025em;">Create Page</h1>
+                <p class="creator-subtitle">Set up a department, college, or student organization page for official announcements.</p>
+
+                <form id="createPageForm">
+                    <!-- Page Name Input -->
+                    <div class="form-group">
+                        <label class="form-label" for="pageName">Department / Org Name (Required)</label>
+                        <input type="text" id="pageName" class="form-input" placeholder="e.g., College of Computing Studies" required oninput="updatePreview()">
+                        <p class="form-hint">Use the official name of your office, college, or student organization.</p>
+                    </div>
+
+                    <!-- Category Select -->
+                    <div class="form-group">
+                        <label class="form-label" for="pageCategory">Category (Required)</label>
+                        <select id="pageCategory" class="form-select" onchange="updatePreview()" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="Academic College">Academic College</option>
+                            <option value="Administrative Office">Administrative Office</option>
+                            <option value="Student Organization">Student Organization</option>
+                            <option value="Campus Council">Campus Council</option>
+                        </select>
+                    </div>
+
+                    <!-- Bio Input -->
+                    <div class="form-group">
+                        <label class="form-label" for="pageBio">Bio (Optional)</label>
+                        <textarea id="pageBio" class="form-textarea" rows="3" placeholder="Tell students about this department's mission..." oninput="updatePreview()"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div>
+                <button type="submit" form="createPageForm" class="btn-submit">Create Page</button>
+            </div>
+        </aside>
+
+        <!-- Right Live Desktop Preview -->
+        <main class="creator-preview-pane">
+            <div class="preview-header">
+                <span class="preview-title">Desktop Preview</span>
+                <div class="device-toggle">
+                    <button class="device-btn active"><i class="fa-solid fa-desktop"></i></button>
+                    <button class="device-btn"><i class="fa-solid fa-mobile-screen-button"></i></button>
+                </div>
+            </div>
+
+            <div class="preview-card">
+                <!-- Cover Banner -->
+                <div class="preview-banner"></div>
+
+                <!-- Avatar and Header Info -->
+                <div class="preview-avatar-wrapper">
+                    <div class="preview-avatar">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <div>
+                        <h2 class="preview-dept-name" id="previewName">Department Name</h2>
+                        <span class="preview-dept-category" id="previewCategory">Category</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="preview-nav-tabs">
+                    <span class="active">Announcements</span>
+                    <span>About</span>
+                    <span>Events</span>
+                    <span>Members</span>
+                </div>
+
+                <!-- Preview Content Body -->
+                <div class="preview-body">
+                    <div class="preview-sidebar-card">
+                        <h4 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--slate-800);">Intro</h4>
+                        <p id="previewBioDisplay" style="font-size: 0.8125rem; color: var(--slate-600); line-height: 1.4;">
+                            Add a bio to let students know what your page is about.
+                        </p>
+                    </div>
+                    <div class="preview-feed-card">
+                        <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem;">
+                            <div style="width: 32px; height: 32px; border-radius: 9999px; background-color: var(--slate-200);"></div>
+                            <div style="height: 12px; width: 40%; background-color: var(--slate-200); border-radius: 4px;"></div>
+                        </div>
+                        <div style="height: 60px; background-color: var(--slate-100); border-radius: 4px;"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Real-time Preview Script -->
+    <script>
+        function updatePreview() {
+            const nameInput = document.getElementById('pageName').value;
+            const categoryInput = document.getElementById('pageCategory').value;
+            const bioInput = document.getElementById('pageBio').value;
+
+            document.getElementById('previewName').textContent = nameInput.trim() !== '' ? nameInput : 'Department Name';
+            document.getElementById('previewCategory').textContent = categoryInput !== '' ? categoryInput : 'Category';
+            document.getElementById('previewBioDisplay').textContent = bioInput.trim() !== '' ? bioInput : 'Add a bio to let students know what your page is about.';
+        }
+    </script>
+</body>
+</html>

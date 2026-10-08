@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - CampusHub</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+  <!-- Continuous Background Blobs & Glowing Stars -->
+  <div class="interactive-bg">
+    <!-- Left Side Blobs -->
+   
+    <div class="bg-blob blob-left-deep float-anim-2"></div>
+    <div class="bg-blob blob-scatter-left-mid float-anim-3"></div>
+
+    <!-- Right Side Blobs -->
+    <div class="bg-blob blob-right-deep float-anim-1"></div>
+    <div class="bg-blob blob-scatter-right-mid float-anim-4"></div>
+
+    <!-- Center & Peripheral Blobs -->
+    <div class="bg-blob blob-3 float-anim-3"></div>
+    <div class="bg-blob blob-scatter-1 float-anim-4"></div>
+    <div class="bg-blob blob-scatter-2 float-anim-1"></div>
+    <div class="bg-blob blob-scatter-3 float-anim-2"></div>
+
+    <!-- Star-like Glowing Mini Blobs -->
+    <div class="star-blob star-1"></div>
+    <div class="star-blob star-2"></div>
+    <div class="star-blob star-3"></div>
+    <div class="star-blob star-4"></div>
+    <div class="star-blob star-5"></div>
+    <div class="star-blob star-6"></div>
+    <div class="star-blob star-7"></div>
+    <div class="star-blob star-8"></div>
+    <div class="star-blob star-9"></div>
+    <div class="star-blob star-10"></div>
+    <div class="star-blob star-11"></div>
+    <div class="star-blob star-12"></div>
+  </div>
+
+  <!-- Login Main Container -->
+  <main class="login-wrapper">
+    <div class="login-card-wrapper" id="cardWrapper">
+
+      <!-- Background Glow Effect behind Form Card -->
+      <div class="card-glow-bg"></div>
+
+      <div class="login-card">
+        <!-- Brand Header -->
+        <div class="login-header">
+          <h2 class="shimmer-glow-text" id="headerTitle">Welcome Back</h2>
+          <p id="headerSub">Access your campus portal and stay connected</p>
+        </div>
+
+        <!-- Tab Switcher -->
+        <div class="auth-tabs">
+          <button class="tab-btn active" onclick="switchTab('login')">Sign In</button>
+          <button class="tab-btn" onclick="switchTab('register')">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <div class="input-container">
+              <input type="text" id="loginEmail" placeholder="username@wmsu.edu.ph" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="loginPassword">Password</label>
+              <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+            <div class="input-container password-container">
+              <input type="password" id="loginPassword" placeholder="••••••••" required>
+              <button type="button" class="toggle-password-btn" onclick="togglePassword('loginPassword', this)" aria-label="Toggle password visibility">
+                <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <svg class="eye-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" checked>
+              <span class="custom-checkbox"></span>
+              Remember me
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary btn-block">Sign In</button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" class="auth-form" onsubmit="event.preventDefault();">
+          
+          <!-- Section 1: Personal Details -->
+          <div class="form-section-title">Personal Information</div>
+
+          <div class="form-group">
+            <label for="regStudentId">Student ID</label>
+            <div class="input-container">
+              <input type="text" id="regStudentId" placeholder="e.g., 2024-01234" required>
+            </div>
+          </div>
+
+          <div class="form-row three-cols">
+            <div class="form-group">
+              <label for="regFirstName">First Name</label>
+              <div class="input-container">
+                <input type="text" id="regFirstName" placeholder="First Name" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="regMiddleName">Middle Name</label>
+              <div class="input-container">
+                <input type="text" id="regMiddleName" placeholder="Middle Name">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="regLastName">Last Name</label>
+              <div class="input-container">
+                <input type="text" id="regLastName" placeholder="Last Name" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Academic Details -->
+          <div class="form-section-title">Academic Details</div>
+
+          <div class="form-group">
+            <label for="regCollege">College / Department</label>
+            <div class="input-container select-container">
+              <select id="regCollege" onchange="updateCourses()" required>
+                <option value="" disabled selected>Select Department</option>
+                <option value="LAW">College of Law (LAW)</option>
+                <option value="COA">College of Agriculture (COA)</option>
+                <option value="CLA">College of Liberal Arts (CLA)</option>
+                <option value="COARCH">College of Architecture</option>
+                <option value="CN">College of Nursing (CN)</option>
+                <option value="CAIS">College of Asian & Islamic Studies (CAIS)</option>
+                <option value="CCS">College of Computing Studies (CCS)</option>
+                <option value="CFES">College of Forestry & Environmental Studies (CFES)</option>
+                <option value="CCJE">College of Criminal Justice Education (CCJE)</option>
+                <option value="CHE">College of Home Economics (CHE)</option>
+                <option value="COE">College of Engineering (COE)</option>
+                <option value="CM">College of Medicine (CM)</option>
+                <option value="CPADS">College of Public Administration & Development Studies (CPADS)</option>
+                <option value="CSSPE">College of Sports Science & Physical Education (CSSPE)</option>
+                <option value="CSM">College of Science & Mathematics (CSM)</option>
+                <option value="CSWCD">College of Social Work & Community Development (CSWCD)</option>
+                <option value="CTE">College of Teacher Education (CTE)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row two-cols">
+            <div class="form-group">
+              <label for="regProgram">Program / Course</label>
+              <div class="input-container select-container">
+                <select id="regProgram" required disabled>
+                  <option value="" disabled selected>Select Department First</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="regYearLevel">Year Level</label>
+              <div class="input-container select-container">
+                <select id="regYearLevel" required>
+                  <option value="" disabled selected>Select Year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                  <option value="5">5th Year+</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Credentials -->
+          <div class="form-section-title">Account Credentials</div>
+
+          <div class="form-group">
+            <label for="regEmail">WMSU Email</label>
+            <div class="input-container">
+              <input type="email" id="regEmail" placeholder="username@wmsu.edu.ph" required>
+            </div>
+          </div>
+
+          <div class="form-row two-cols">
+            <div class="form-group">
+              <label for="regPassword">Password</label>
+              <div class="input-container password-container">
+                <input type="password" id="regPassword" placeholder="••••••••" required>
+                <button type="button" class="toggle-password-btn" onclick="togglePassword('regPassword', this)" aria-label="Toggle password visibility">
+                  <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <svg class="eye-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="regConfirmPassword">Confirm Password</label>
+              <div class="input-container password-container">
+                <input type="password" id="regConfirmPassword" placeholder="••••••••" required>
+                <button type="button" class="toggle-password-btn" onclick="togglePassword('regConfirmPassword', this)" aria-label="Toggle password visibility">
+                  <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <svg class="eye-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" required>
+              <span class="custom-checkbox"></span>
+              I agree to the <a href="#" class="inline-link">Terms & Conditions</a>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary btn-block">Create Account</button>
+        </form>
+
+        <!-- Card Footer -->
+        <div class="login-footer">
+          <p>Protected by CampusHub Identity System</p>
+        </div>
+      </div>
+      <a href="./staff/staff_dashboard.html" style="text-decoration: none; color: #ffffff;">staff</a>
+      <a href="./student/student_dashboard.html" style="text-decoration: none; color: #ffffff;">student</a>
+    </div>
+    
+  </main>
+
+  <script>
+    // Complete Department to Courses Mapping
+    const collegeCourses = {
+      LAW: [
+        'BS Laws'
+      ],
+      COA: [
+        'BS Agriculture',
+        'BS Food Technology',
+        'BS Agribusiness',
+        'Bachelor of Agricultural Technology'
+      ],
+      CLA: [
+        'BS Accountancy',
+        'BA History',
+        'BA English',
+        'BA Political Science',
+        'BA Mass Communication – Journalism',
+        'BA Mass Communication – Broadcasting',
+        'BS Economics',
+        'BS Psychology'
+      ],
+      COARCH: [
+        'BS Architecture'
+      ],
+      CN: [
+        'BS Nursing'
+      ],
+      CAIS: [
+        'Asian and Islamic Studies'
+      ],
+      CCS: [
+        'BS Computer Science (BSCS)',
+        'BS Information Technology (BSIT)',
+        'ACT AD',
+        'ACT NT'
+      ],
+      CFES: [
+        'BS Forestry',
+        'BS Agroforestry',
+        'BS Environmental Science'
+      ],
+      CCJE: [
+        'Criminal Justice Education'
+      ],
+      CHE: [
+        'BS Home Economics',
+        'BS Nutrition & Dietetics',
+        'BS Hospitality Management'
+      ],
+      COE: [
+        'Agricultural and Biosystems Engineering',
+        'BS Civil Engineering',
+        'BS Computer Engineering',
+        'BS Electrical Engineering',
+        'BS Electronics Engineering',
+        'BS Environmental Engineering',
+        'BS Geodetic Engineering',
+        'BS Industrial Engineering',
+        'BS Mechanical Engineering',
+        'BS Sanitary Engineering'
+      ],
+      CM: [
+        'Doctor of Medicine'
+      ],
+      CPADS: [
+        'BS Public Administration'
+      ],
+      CSSPE: [
+        'BS Physical Education',
+        'BS Exercise & Sports Sciences'
+      ],
+      CSM: [
+        'BS Biology',
+        'BS Chemistry',
+        'BS Mathematics',
+        'BS Statistics',
+        'BS Physics'
+      ],
+      CSWCD: [
+        'BS Social Work',
+        'BS Community Development'
+      ],
+      CTE: [
+        'Bachelor of Culture and Arts Education',
+        'Bachelor of Early Childhood Education',
+        'Bachelor of Elementary Education',
+        'Bachelor of Secondary Education – English',
+        'Bachelor of Secondary Education – Filipino',
+        'Bachelor of Secondary Education – Mathematics',
+        'Bachelor of Secondary Education – Sciences',
+        'Bachelor of Secondary Education – Social Studies',
+        'Bachelor of Secondary Education – Values Education',
+        'Bachelor of Special Needs Education'
+      ]
+    };
+
+    // Dynamically update course options based on selected college
+    function updateCourses() {
+      const collegeSelect = document.getElementById('regCollege');
+      const programSelect = document.getElementById('regProgram');
+      const selectedCollege = collegeSelect.value;
+
+      programSelect.innerHTML = '';
+
+      if (selectedCollege && collegeCourses[selectedCollege]) {
+        programSelect.disabled = false;
+
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        defaultOption.textContent = 'Select Course';
+        programSelect.appendChild(defaultOption);
+
+        collegeCourses[selectedCollege].forEach(course => {
+          const option = document.createElement('option');
+          option.value = course;
+          option.textContent = course;
+          programSelect.appendChild(option);
+        });
+      } else {
+        programSelect.disabled = true;
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        defaultOption.textContent = 'Select Department First';
+        programSelect.appendChild(defaultOption);
+      }
+    }
+
+    // Tab switching logic
+    function switchTab(tab) {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const tabs = document.querySelectorAll('.tab-btn');
+      const cardWrapper = document.getElementById('cardWrapper');
+      const headerTitle = document.getElementById('headerTitle');
+      const headerSub = document.getElementById('headerSub');
+
+      if (tab === 'login') {
+        loginForm.classList.add('active');
+        registerForm.classList.remove('active');
+        tabs[0].classList.add('active');
+        tabs[1].classList.remove('active');
+        cardWrapper.classList.remove('wide-mode');
+        headerTitle.textContent = 'Welcome Back';
+        headerSub.textContent = 'Access your campus portal and stay connected';
+      } else {
+        loginForm.classList.remove('active');
+        registerForm.classList.add('active');
+        tabs[0].classList.remove('active');
+        tabs[1].classList.add('active');
+        cardWrapper.classList.add('wide-mode');
+        headerTitle.textContent = 'Create Account';
+        headerSub.textContent = 'Register to unlock campus resources and tools';
+      }
+    }
+
+    // Toggle Password Visibility Logic
+    function togglePassword(inputId, btn) {
+      const passwordInput = document.getElementById(inputId);
+      const isPassword = passwordInput.type === 'password';
+      
+      passwordInput.type = isPassword ? 'text' : 'password';
+      btn.classList.toggle('visible', isPassword);
+    }
+  </script>
+</body>
+</html>

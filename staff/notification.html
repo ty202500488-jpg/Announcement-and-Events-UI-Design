@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - CRIMSON</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="notification.css">
+</head>
+<body>
+
+    <!-- TOP NAVBAR -->
+    <header class="header">
+        <div class="header-container">
+            
+            <!-- Left Logo & Branding -->
+            <div class="flex items-center gap-3">
+                <button id="mobileMenuBtn" class="mobile-menu-btn icon-btn" style="color: var(--slate-600);">
+                    <i class="fa-solid fa-bars" style="font-size: 1.25rem;"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div>
+                        <h1 style="font-family: 'Bungee', sans-serif; font-weight: 700; color: #561C24; font-size: 1.525rem; line-height: 1.2; letter-spacing: -0.025em;">CRIM<span style="color: #881337;">SON</span></h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Search Bar -->
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search Announcements, Events, Departments..." class="search-input">
+                    <button class="filter-btn">
+                        <i class="fa-sliders fa-solid" style="font-size: 0.75rem;"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Profile & Quick Actions -->
+            <div class="flex items-center gap-3"> 
+                <div style="position: relative;">
+                    <a href="notification.html" class="icon-btn active-icon">
+                        <i class="fa-regular fa-bell" style="font-size: 1rem;"></i>
+                        <span class="badge-dot"></span>
+                    </a>
+                </div>
+
+                <div class="divider-v"></div>
+
+                <!-- User Profile Dropdown -->
+                <a href="profile.html" class="profile-btn" style="text-decoration: none;">
+                    <div class="avatar-wrapper">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop" 
+                             alt="Alex Rivera" 
+                             class="avatar-img"
+                             onerror="this.src='https://placehold.co/100x100/2563eb/ffffff?text=AR'">
+                        <span class="online-status"></span>
+                    </div>
+                    <div class="hidden-sm" style="display: none; text-align: left; padding-right: 0.25rem;">
+                        <div style="font-weight: 600; color: var(--slate-800); font-size: 0.75rem; line-height: 1.2; display: flex; align-items: center; gap: 0.25rem;">
+                            Alex Rivera
+                        </div>
+                        <div style="font-size: 11px; color: var(--slate-500); line-height: 1.2;">BS Computer Science</div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down hidden-sm" style="display: none; color: var(--slate-400); font-size: 10px; padding-right: 0.25rem;"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER GRID -->
+    <div class="main-container">
+
+        <!-- ==================== LEFT SIDEBAR ==================== -->
+        <aside id="leftSidebar" class="lg-col-3 space-y-6 hidden lg-block">
+            <div class="card space-y-5" style="padding: 1rem;">
+                
+                <!-- Section: USER HEADER -->
+                <div style="padding-top: 0.75rem; border-bottom: 1px solid var(--slate-200);">
+                    <div class="flex items-center gap-3" style="padding: 0.5rem 0.75rem;">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop" 
+                             alt="Alex Rivera" 
+                             class="avatar-img"
+                             onerror="this.src='https://placehold.co/100x100/2563eb/ffffff?text=AR'">
+                        <span style="font-weight: 600; color: var(--slate-800); font-size: 0.875rem;">Alex Rivera</span>
+                    </div>
+                </div>
+
+                <!-- Section: MAIN -->
+                <div>
+                    <div class="nav-group-title">Main</div>
+                    <nav class="space-y-1">
+                        <a href="staff_dashboard.html" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-house nav-icon"></i>
+                                <span>Home</span>
+                            </div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-bullhorn nav-icon"></i>
+                                <span>Announcements</span>
+                            </div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-regular fa-calendar-days nav-icon"></i>
+                                <span>Events</span>
+                            </div>
+                        </a>
+                        <a href="myPage.html" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-flag nav-icon"></i>
+                                <span>My Page</span>
+                            </div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-building-columns nav-icon"></i>
+                                <span>My Events</span>
+                            </div>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Section: PERSONAL -->
+                <div>
+                    <div class="nav-group-title">Personal</div>
+                    <nav class="space-y-1">
+                        <a href="profile.html" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-user nav-icon"></i>
+                                <span>Profile</span>
+                            </div>
+                        </a>
+                        <a href="notification.html" class="nav-item active btn-nav">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-bell nav-icon"></i>
+                                <span>Notifications</span>
+                            </div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-bookmark nav-icon"></i>
+                                <span>Saved</span>
+                            </div>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Section: SYSTEM -->
+                <div>
+                    <div class="nav-group-title">System</div>
+                    <nav class="space-y-1">
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-circle-info nav-icon"></i>
+                                <span>Help & Support</span>
+                            </div>
+                        </a>
+                        <a href="../index.html" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-gear nav-icon"></i>
+                                <span>Settings</span>
+                            </div>
+                        </a>
+                        <a href="index.html" class="nav-item" style="color: var(--rose-600);">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-right-from-bracket nav-icon" style="color: var(--rose-600);"></i>
+                                <span>Logout</span>
+                            </div>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ==================== CENTER MAIN CONTENT (NOTIFICATIONS) ==================== -->
+        <main class="lg-col-6 space-y-4">
+            
+            <!-- HEADER CARD & TABS -->
+            <div class="card" style="padding: 1.25rem 1.5rem;">
+                <div class="flex items-center justify-between flex-wrap gap-3">
+                    <div>
+                        <h2 style="font-family: 'Bungee', sans-serif; font-weight: 400; color: var(--slate-900);">Notifications</h2>
+                    </div>
+                </div>
+
+                <!-- Notification Filters -->
+                <div class="notif-tabs">
+                    <button class="tab-btn active">All</button>
+                    <button class="tab-btn">Unread</button>
+                    <button class="tab-btn">Announcements</button>
+                    <button class="tab-btn">Academic</button>
+                </div>
+            </div>
+
+            <!-- NOTIFICATION LIST -->
+            <div class="space-y-3" style="padding-bottom: 1.5rem;">
+                
+                <!-- Today Section -->
+                <div class="notif-group-label">Today</div>
+
+                <!-- 1. Unread Announcement -->
+                <div class="card notif-card unread">
+                    <div class="notif-icon-wrapper icon-announcement">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="notif-body">
+                        <div class="notif-header">
+                            <span class="notif-source">College of Computing Studies</span>
+                            <span class="notif-time">10 mins ago</span>
+                        </div>
+                        <h4 class="notif-title">Midterm Examination Schedule Update</h4>
+                        <p class="notif-message">The revised examination room assignments for BSCS 2nd Year students have been posted for the upcoming midterms.</p>
+                        <div class="notif-actions">
+                            <a href="#" class="notif-link">View Schedule <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="unread-indicator"></div>
+                </div>
+
+                <!-- 2. Unread Event -->
+                <div class="card notif-card unread">
+                    <div class="notif-icon-wrapper icon-event">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <div class="notif-body">
+                        <div class="notif-header">
+                            <span class="notif-source">WMSU Student Council</span>
+                            <span class="notif-time">2 hours ago</span>
+                        </div>
+                        <h4 class="notif-title">Upcoming Campus Hackathon 2026</h4>
+                        <p class="notif-message">Registration is now open for the annual Crimson CodeFest. Register your team before Friday midnight.</p>
+                        <div class="notif-actions">
+                            <a href="#" class="notif-link">Register Now <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="unread-indicator"></div>
+                </div>
+
+                <!-- Earlier Section -->
+                <div class="notif-group-label">Earlier</div>
+
+                <!-- 3. Read Alert -->
+                <div class="card notif-card">
+                    <div class="notif-icon-wrapper icon-system">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <div class="notif-body">
+                        <div class="notif-header">
+                            <span class="notif-source">University Registrar</span>
+                            <span class="notif-time">Yesterday</span>
+                        </div>
+                        <h4 class="notif-title">Document Clearance Confirmed</h4>
+                        <p class="notif-message">Your academic status clearance for the current semester has been verified and processed by the registrar office.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Read Announcement -->
+                <div class="card notif-card">
+                    <div class="notif-icon-wrapper icon-university">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="notif-body">
+                        <div class="notif-header">
+                            <span class="notif-source">Western Mindanao State University</span>
+                            <span class="notif-time">2 days ago</span>
+                        </div>
+                        <h4 class="notif-title">Campus Facilities Maintenance Schedule</h4>
+                        <p class="notif-message">The main university library and computer laboratories will undergo scheduled network maintenance this Saturday.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- ==================== RIGHT SIDEBAR ==================== -->
+        <aside class="lg-col-3 space-y-6">
+
+            <!-- NOTIFICATION PREFERENCES CARD -->
+            <div class="card" style="padding: 1.25rem;">
+                <h3 style="font-weight: 700; color: var(--slate-900); font-size: 0.875rem; margin-bottom: 1rem;">
+                    Notification Settings
+                </h3>
+
+                <div class="space-y-3">
+                    <label class="setting-toggle">
+                        <span class="setting-text">
+                            <strong>Academic Alerts</strong>
+                            <small>Grades, class shifts & schedules</small>
+                        </span>
+                        <input type="checkbox" checked class="toggle-checkbox">
+                        <span class="toggle-switch"></span>
+                    </label>
+
+                    <label class="setting-toggle">
+                        <span class="setting-text">
+                            <strong>Department Broadcasts</strong>
+                            <small>Notices from College of Computing</small>
+                        </span>
+                        <input type="checkbox" checked class="toggle-checkbox">
+                        <span class="toggle-switch"></span>
+                    </label>
+
+                    <label class="setting-toggle">
+                        <span class="setting-text">
+                            <strong>Campus Events</strong>
+                            <small>Student council & university events</small>
+                        </span>
+                        <input type="checkbox" class="toggle-checkbox">
+                        <span class="toggle-switch"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- DEPARTMENTS CARD -->
+            <div class="card" style="padding: 1.25rem;">
+                <div class="flex items-center justify-between" style="margin-bottom: 1rem;">
+                    <h3 style="font-weight: 700; color: var(--slate-900); font-size: 0.875rem;">Departments</h3>
+                    <span style="color: var(--brand-600); font-size: 11px; font-weight: 700; padding: 0.125rem 0.5rem; cursor: pointer;">View All</span>
+                </div>
+
+                <div class="dept-list space-y-2">
+                    <a href="#" class="dept-item dept-item-university">
+                        <div class="dept-badge dept-badge-university">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">Western Mindanao State University</span>
+                            <span class="dept-sub">General updates & notices</span>
+                        </div>
+                    </a>
+
+                    <a href="#" class="dept-item dept-item-user">
+                        <div class="dept-badge dept-badge-user">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">College of Computing Studies</span>
+                            <span class="dept-sub">CSS Department</span>
+                        </div>
+                    </a>
+
+                    <div class="dept-divider"></div>
+
+                    <a href="#" class="dept-item">
+                        <div class="dept-badge">
+                            <i class="fa-solid fa-compass-drafting"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">College of Medicine</span>
+                            <span class="dept-sub">CM Department</span>
+                        </div>
+                    </a>
+
+                    <a href="#" class="dept-item">
+                        <div class="dept-badge">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">College of Liberal Arts</span>
+                            <span class="dept-sub">CLA Department</span>
+                        </div>
+                    </a>
+
+                    <a href="#" class="see-more-btn">
+                        <span>See More</span>
+                    </a>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const leftSidebar = document.getElementById('leftSidebar');
+
+            mobileMenuBtn?.addEventListener('click', () => {
+                leftSidebar.classList.toggle('mobile-sidebar-active');
+            });
+        });
+    </script>
+</body>
+</html>

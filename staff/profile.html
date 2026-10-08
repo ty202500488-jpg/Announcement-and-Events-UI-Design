@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - CRIMSON</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+    <!-- TOP NAVBAR -->
+    <header class="header">
+        <div class="header-container">
+            
+            <!-- Left Logo & Branding -->
+            <div class="flex items-center gap-3">
+                <button id="mobileMenuBtn" class="mobile-menu-btn icon-btn" style="color: var(--slate-600);">
+                    <i class="fa-solid fa-bars" style="font-size: 1.25rem;"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div>
+                        <h1 style="font-family: 'Bungee', sans-serif; font-weight: 700; color: #561C24; font-size: 1.525rem; line-height: 1.2; letter-spacing: -0.025em;">CRIM<span style="color: #881337;">SON</span></h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Search Bar -->
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search Announcements, Events, Departments..." class="search-input">
+                    <button class="filter-btn">
+                        <i class="fa-sliders fa-solid" style="font-size: 0.75rem;"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Profile & Quick Actions -->
+            <div class="flex items-center gap-3"> 
+                <div style="position: relative;">
+                    <button id="notifBtn" class="icon-btn">
+                        <i class="fa-regular fa-bell" style="font-size: 1rem;"></i>
+                        <span class="badge-dot"></span>
+                    </button>
+                </div>
+
+                <div class="divider-v"></div>
+
+                <!-- User Profile Dropdown -->
+                <div class="profile-btn">
+                    <div class="avatar-wrapper">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop" 
+                             alt="Alex Rivera" 
+                             class="avatar-img"
+                             onerror="this.src='https://placehold.co/100x100/2563eb/ffffff?text=AR'">
+                        <span class="online-status"></span>
+                    </div>
+                    <div class="hidden-sm" style="display: none; text-align: left; padding-right: 0.25rem;">
+                        <div style="font-weight: 600; color: var(--slate-800); font-size: 0.75rem; line-height: 1.2; display: flex; align-items: center; gap: 0.25rem;">
+                            Alex Rivera
+                        </div>
+                        <div style="font-size: 11px; color: var(--slate-500); line-height: 1.2;">BS Computer Science</div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down hidden-sm" style="display: none; color: var(--slate-400); font-size: 10px; padding-right: 0.25rem;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER GRID -->
+    <div class="main-container">
+
+        <!-- ==================== LEFT SIDEBAR ==================== -->
+        <aside id="leftSidebar" class="lg-col-3 space-y-6 hidden lg-block">
+            <div class="card space-y-5" style="padding: 1rem;">
+                
+                <!-- Section: MAIN -->
+                <div style="padding-top: 0.75rem; border-bottom: 1px solid var(--slate-200);">
+                    <div class="flex items-center gap-3" style="padding: 0.5rem 0.75rem;">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop" 
+                             alt="Alex Rivera" 
+                             class="avatar-img"
+                             onerror="this.src='https://placehold.co/100x100/2563eb/ffffff?text=AR'">
+                        <span style="font-weight: 600; color: var(--slate-800); font-size: 0.875rem;">Alex Rivera</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="nav-group-title">Main</div>
+                    <nav class="space-y-1">
+                        <a href="staff_dashboard.html" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-house nav-icon"></i>
+                                <span>Home</span>
+                            </div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-bullhorn nav-icon"></i>
+                                <span>Announcements</span>
+                            </div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-regular fa-calendar-days nav-icon"></i>
+                                <span>Events</span>
+                            </div>
+                        </a>
+                        <a href="myPage.html" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-flag nav-icon"></i>
+                                <span>My Page</span>
+                            </div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-building-columns nav-icon"></i>
+                                <span>My Events</span>
+                            </div>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Section: PERSONAL -->
+                <div>
+                    <div class="nav-group-title">Personal</div>
+                    <nav class="space-y-1">
+                        <a href="profile.html" class="nav-item active btn-nav">
+                            <div class="nav-item-content">
+                                <i class="fa-regular fa-user nav-icon"></i>
+                                <span>Profile</span>
+                            </div>
+                        </a>
+                        <a href="notification.html" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-regular fa-bell nav-icon"></i>
+                                <span>Notifications</span>
+                            </div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-bookmark nav-icon"></i>
+                                <span>Saved</span>
+                            </div>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Section: SYSTEM -->
+                <div>
+                    <div class="nav-group-title">System</div>
+                    <nav class="space-y-1">
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-circle-info nav-icon"></i>
+                                <span>Help & Support</span>
+                            </div>
+                        </a>
+                        <a href="#" class="nav-item">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-gear nav-icon"></i>
+                                <span>Settings</span>
+                            </div>
+                        </a>
+                        <a href="../index.html" class="nav-item" style="color: var(--rose-600);">
+                            <div class="nav-item-content">
+                                <i class="fa-solid fa-right-from-bracket nav-icon" style="color: var(--rose-600);"></i>
+                                <span>Logout</span>
+                            </div>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ==================== CENTER MAIN CONTENT (STUDENT PROFILE) ==================== -->
+        <main class="lg-col-6 space-y-6">
+            
+            <!-- PROFILE CARD -->
+            <div class="card overflow-hidden">
+                <div class="profile-banner"></div>
+                
+                <div class="profile-header-content">
+                    <div class="profile-avatar-container">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop" 
+                             alt="Alex Rivera" 
+                             class="profile-large-avatar"
+                             onerror="this.src='https://placehold.co/128x128/2563eb/ffffff?text=AR'">
+                        <span class="profile-status-online"></span>
+                    </div>
+
+                    <div class="profile-user-details">
+                        <div class="flex items-center justify-between flex-wrap gap-3">
+                            <div>
+                                <h2 class="profile-name">Alex Rivera</h2>
+                                <p class="profile-headline">BS Computer Science • Western Mindanao State University</p>
+                            </div>
+                            <button class="btn-nav" style="font-size: 0.8125rem; padding: 0.5rem 1rem;">
+                                <i class="fa-solid fa-pen-to-square" style="margin-right: 0.375rem;"></i> Edit Profile
+                            </button>
+                        </div>
+
+                        <div class="profile-meta-grid">
+                            <div class="meta-item">
+                                <i class="fa-solid fa-id-card"></i>
+                                <span>Student ID: 2026-00123</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span>College of Computing Studies</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fa-regular fa-envelope"></i>
+                                <span>alex.rivera@wmsu.edu.ph</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Zamboanga City, Philippines</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACADEMIC & ACCOUNT DETAILS CARD -->
+            <div class="card" style="padding: 1.5rem;">
+                <h3 style="font-weight: 700; color: var(--slate-900); font-size: 1rem; margin-bottom: 1rem;">
+                    Account & Academic Overview
+                </h3>
+
+                <div class="space-y-3-5">
+                    <div class="info-row">
+                        <span class="info-label">Full Name</span>
+                        <span class="info-value">Alex Rivera</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Degree Program</span>
+                        <span class="info-value">BS Computer Science</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Year Level</span>
+                        <span class="info-value">2nd Year</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Department</span>
+                        <span class="info-value">College of Computing Studies (CCS)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Account Status</span>
+                        <span class="info-value" style="color: var(--emerald-600); font-weight: 600;">Active Student</span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ==================== RIGHT SIDEBAR ==================== -->
+        <aside class="lg-col-3 space-y-6">
+
+            <div class="card" style="padding: 1.25rem;">
+                <div class="flex items-center justify-between" style="margin-bottom: 1rem;">
+                    <h3 style="font-weight: 700; color: var(--slate-900); font-size: 0.875rem;">Departments</h3>
+                    <span style="color: var(--brand-600); font-size: 11px; font-weight: 700; padding: 0.125rem 0.5rem;">View All</span>
+                </div>
+
+                <div class="dept-list space-y-2">
+
+                    <!-- 1. University Wide (Pinned Top) -->
+                    <a href="#" class="dept-item dept-item-university">
+                        <div class="dept-badge dept-badge-university">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="dept-info">
+                            <div class="flex items-center justify-between">
+                                <span class="dept-title">Western Mindanao State University</span>
+                            </div>
+                            <span class="dept-sub">General updates & notices</span>
+                        </div>
+                    </a>
+
+                    <!-- 2. Your Department (Pinned Second) -->
+                    <a href="#" class="dept-item dept-item-user">
+                        <div class="dept-badge dept-badge-user">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div class="dept-info">
+                            <div class="flex items-center justify-between">
+                                <span class="dept-title">College of Computing Studies</span>
+                            </div>
+                            <span class="dept-sub">CSS Department</span>
+                        </div>
+                    </a>
+
+                    <div class="dept-divider"></div>
+
+                    <!-- Medicine -->
+                    <a href="#" class="dept-item">
+                        <div class="dept-badge">
+                            <i class="fa-solid fa-compass-drafting"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">College of Medicine</span>
+                            <span class="dept-sub">CM Department</span>
+                        </div>
+                    </a>
+
+                    <!-- Liberal Arts -->
+                    <a href="#" class="dept-item">
+                        <div class="dept-badge">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">College of Liberal Arts</span>
+                            <span class="dept-sub">CLA Department</span>
+                        </div>
+                    </a>
+
+                    <!-- Education -->
+                    <a href="#" class="dept-item">
+                        <div class="dept-badge">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">College of Education</span>
+                            <span class="dept-sub">CTE Department</span>
+                        </div>
+                    </a>
+
+                    <!-- Engineering -->
+                    <a href="#" class="dept-item">
+                        <div class="dept-badge">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">College of Engineering</span>
+                            <span class="dept-sub">COE Department</span>
+                        </div>
+                    </a>
+
+                    <!-- Nursing -->
+                    <a href="#" class="dept-item">
+                        <div class="dept-badge">
+                            <i class="fa-solid fa-user-nurse"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">College of Nursing</span>
+                            <span class="dept-sub">CN Department</span>
+                        </div>
+                    </a>
+
+                    <!-- CCEJE -->
+                    <a href="#" class="dept-item">
+                        <div class="dept-badge">
+                            <i class="fa-solid fa-users-gear"></i>
+                        </div>
+                        <div class="dept-info">
+                            <span class="dept-title">College of Criminal Justice Education</span>
+                            <span class="dept-sub">CCEJE Department</span>
+                        </div>
+                    </a>
+
+                    <!-- SEE MORE ACTION -->
+                    <a href="#" class="see-more-btn">
+                        <span>See More</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i>
+                    </a>
+
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const leftSidebar = document.getElementById('leftSidebar');
+
+            mobileMenuBtn?.addEventListener('click', () => {
+                leftSidebar.classList.toggle('mobile-sidebar-active');
+            });
+        });
+    </script>
+</body>
+</html>

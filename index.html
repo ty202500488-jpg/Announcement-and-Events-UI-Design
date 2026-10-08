@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRIMSON | Campus Announcement & Event Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Background Canvas -->
+  <div class="interactive-bg">
+    <div class="bg-blob blob-1 float-anim-1"></div>
+    <div class="bg-blob blob-left-deep float-anim-2"></div>
+    <div class="bg-blob blob-scatter-left-mid float-anim-3"></div>
+
+    <div class="bg-blob blob-2 float-anim-2"></div>
+    <div class="bg-blob blob-right-deep float-anim-1"></div>
+    <div class="bg-blob blob-scatter-right-mid float-anim-4"></div>
+
+    <div class="bg-blob blob-3 float-anim-3"></div>
+    <div class="bg-blob blob-scatter-1 float-anim-4"></div>
+    <div class="bg-blob blob-scatter-2 float-anim-1"></div>
+    <div class="bg-blob blob-scatter-3 float-anim-2"></div>
+
+    <!-- Glowing Stars -->
+    <div class="star-blob star-1"></div>
+    <div class="star-blob star-2"></div>
+    <div class="star-blob star-3"></div>
+    <div class="star-blob star-4"></div>
+    <div class="star-blob star-5"></div>
+    <div class="star-blob star-6"></div>
+    <div class="star-blob star-7"></div>
+    <div class="star-blob star-8"></div>
+    <div class="star-blob star-9"></div>
+    <div class="star-blob star-10"></div>
+    <div class="star-blob star-11"></div>
+    <div class="star-blob star-12"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">CRIM<span>SON</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link">Home</a></li>
+        <li><a href="#campus-life" class="nav-link">Events</a></li>
+        <li><a href="#campus-life" class="nav-link">Announcements</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn-nav">Sign In</a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle Navigation">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="hero">
+    <div class="hero-container">
+      
+      <!-- Multi-Circle Circular Composite Image Frame -->
+      <div class="hero-image-wrapper">
+        <div class="hero-photo-blob"></div>
+
+        <div class="circular-hero-container">
+          <div class="hero-circle main-circle">
+            <img 
+              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1000&q=80" 
+              alt="Campus Life Central Feature"
+            />
+          </div>
+
+          <div class="hero-circle satellite-circle sat-top">
+            <img 
+              src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=500&q=80" 
+              alt="Campus Event Preview"
+            />
+          </div>
+
+          <div class="hero-circle satellite-circle sat-mid">
+            <img 
+              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=500&q=80" 
+              alt="Student Collaboration Preview"
+            />
+          </div>
+
+          <div class="hero-circle satellite-circle sat-bot">
+            <img 
+              src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=500&q=80" 
+              alt="Campus Activities Preview"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Typography & Call-To-Actions -->
+      <div class="hero-content">
+        <h1 class="hero-title animate-text">
+          Your Campus,<br>
+          <span class="shimmer-glow-text">In One Place.</span>
+        </h1>
+        <p class="hero-subtitle animate-text delay-1">
+          Stay updated with the latest announcements, events, deadlines, and activities happening around campus.
+        </p>
+        <div class="hero-actions animate-text delay-2">
+          <a href="#campus-life" class="btn-primary">Explore Events</a>
+          <a href="#campus-life" class="btn-secondary">View Announcements</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Showcase Grid Section -->
+  <section class="grid-showcase-section" id="campus-life">
+    <div class="showcase-container">
+      
+      <!-- Section Header -->
+      <div class="destinations-header">
+        <h2 class="destinations-title">Campus Updates & Events</h2>
+        <a href="#" class="view-all-link">
+          View All Updates
+          <span class="arrow-circle">&rarr;</span>
+        </a>
+      </div>
+
+      <!-- 4-Card Full-Bleed Grid Layout -->
+      <div class="destination-cards-grid">
+        
+        <!-- Card 1 -->
+        <article class="dest-card">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Tech & Innovation Summit" class="dest-card-bg" />
+          <div class="dest-card-overlay"></div>
+
+          <div class="dest-card-content">
+            <div class="dest-info">
+              <h3 class="dest-name">Annual Tech Summit</h3>
+              <p class="dest-sub">Main Auditorium • Nov 12</p>
+            </div>
+            <span class="dest-price tag-open">view</span>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="dest-card">
+          <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80" alt="Midterm Exam Schedule" class="dest-card-bg" />
+          <div class="dest-card-overlay"></div>
+          
+          <div class="dest-card-content">
+            <div class="dest-info">
+              <h3 class="dest-name">Midterm Exam Schedule</h3>
+              <p class="dest-sub">Academic Affairs Release</p>
+            </div>
+            <span class="dest-price tag-open">view</span>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="dest-card">
+          <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" alt="Student Org Fair" class="dest-card-bg" />
+          <div class="dest-card-overlay"></div>
+        
+          <div class="dest-card-content">
+            <div class="dest-info">
+              <h3 class="dest-name">Campus Org Fair</h3>
+              <p class="dest-sub">University Quad • Oct 28</p>
+            </div>
+            <span class="dest-price tag-open">view</span>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="dest-card">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80" alt="Scholarship Applications" class="dest-card-bg" />
+          <div class="dest-card-overlay"></div>
+          
+          <div class="dest-card-content">
+            <div class="dest-info">
+              <h3 class="dest-name">Scholarship Grant 2026</h3>
+              <p class="dest-sub">Student Affairs Office</p>
+            </div>
+            <span class="dest-price tag-apply">View</span>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Feature Showcase Grid Section -->
+  <section class="about-section" id="about">
+    <div class="section-container">
+      
+      <div class="grid-top">
+        <div class="grid-card image-card">
+          <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80" alt="Campus Life" class="card-bg-img" />
+          <div class="card-overlay"></div>
+          <div class="card-content-overlay">
+            <h3 class="card-headline">EXPLORE A THRIVING CAMPUS WORLD</h3>
+            <a href="#" class="circle-btn" aria-label="Explore Campus World">&rarr;</a>
+          </div>
+        </div>
+
+        <div class="grid-card text-card">
+          <div class="card-body">
+            <h3 class="card-title-dark">OWN YOUR CAMPUS LIFE</h3>
+            <p class="card-desc-dark">From high-energy club fairs to real-time deadline updates, take complete control of your student journey.</p>
+            <a href="#" class="pill-btn">LEARN MORE <span class="arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <div class="grid-card image-card">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80" alt="Campus Events" class="card-bg-img" />
+          <div class="card-overlay"></div>
+          <div class="card-content-overlay">
+            <h3 class="card-headline">ENDLESS CONNECTIONS</h3>
+            <a href="#" class="circle-btn" aria-label="Endless Connections">&rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-bottom">
+        <div class="grid-card text-card-wide">
+          <h2 class="card-title-dark section-heading">ABOUT CRIMSON</h2>
+          <p class="card-desc-dark wide-text">
+            The ultimate digital portal for your student experience. Stay connected with instant university announcements, track upcoming event schedules, and stay aligned with vital academic deadlines—all in one place.
+          </p>
+          <a href="#" class="pill-btn">DISCOVER MORE <span class="arrow">&rarr;</span></a>
+        </div>
+
+        <div class="grid-card image-card banner-card">
+          <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80" alt="Welcome to Crimson" class="card-bg-img" />
+          <div class="card-overlay"></div>
+          
+          <div class="vertical-badge">
+            <span class="badge-text">WELCOME TO CRIMSON</span>
+            <a href="#" class="circle-btn badge-btn" aria-label="Welcome to Crimson">&rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2026 CRIMSON Campus Management System. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact Support</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      const navActions = document.querySelector('.nav-actions');
+
+      if (navToggle) {
+        navToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('nav-active');
+          navActions.classList.toggle('nav-active');
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            if (navLinks.classList.contains('nav-active')) {
+              navLinks.classList.remove('nav-active');
+              navActions.classList.remove('nav-active');
+            }
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
