@@ -13,14 +13,12 @@ import {
   Settings,
   PenLine,
   LogOut,
-  Puzzle,
   SlidersHorizontal,
   GraduationCap,
   Building2,
   Monitor,
 } from "lucide-react";
 import ProfileModal from "./ProfileModal.jsx";
-import { useFeatures } from "../context/FeaturesContext.jsx";
 import { useData } from "../context/DataContext.jsx";
 
 const MAIN = [
@@ -107,7 +105,6 @@ function DepartmentsRail() {
 }
 
 export default function Layout() {
-  const { features } = useFeatures();
   const { pathname } = useLocation();
   const [menu, setMenu] = useState(null); // "notif" | "user" | null
   const [profileOpen, setProfileOpen] = useState(false);
@@ -172,7 +169,7 @@ export default function Layout() {
               </span>
               <span className="user-text">
                 <b>System Administrator</b>
-                <span>MISTO Office</span>
+                <span>ICT Office</span>
               </span>
               <ChevronDown size={18} />
             </button>
@@ -217,20 +214,6 @@ export default function Layout() {
             {INSIGHTS.map((item) => (
               <NavItem key={item.to} {...item} />
             ))}
-
-            {features.length > 0 && (
-              <>
-                <div className="nav-label">Extensions</div>
-                {features.map((f) => (
-                  <NavItem
-                    key={f.id}
-                    to={`/feature/${f.id}`}
-                    label={f.name}
-                    icon={Puzzle}
-                  />
-                ))}
-              </>
-            )}
 
             <div className="nav-label">System</div>
             <NavItem to="/settings" label="System Settings" icon={Settings} />

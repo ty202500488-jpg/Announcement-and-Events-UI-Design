@@ -1,18 +1,14 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Eye,
   Megaphone,
   Calendar,
   Users,
-  Plus,
   Search,
   ChevronDown,
   PenLine,
   Trash2,
 } from "lucide-react";
-import AddFeatureModal from "../components/AddFeatureModal.jsx";
-import { useFeatures } from "../context/FeaturesContext.jsx";
 
 const STATS = [
   { icon: Eye, value: "28.4k", label: "Total reach", delta: "+12.4%" },
@@ -63,15 +59,6 @@ export default function Overview() {
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState("all");
   const [showSearch, setShowSearch] = useState(false);
-  const [featureOpen, setFeatureOpen] = useState(false);
-  const navigate = useNavigate();
-  const { addFeature } = useFeatures();
-
-  const handleAddFeature = (name, description) => {
-    const f = addFeature(name, description);
-    setFeatureOpen(false);
-    navigate(`/feature/${f.id}`);
-  };
 
   const filtered = rows.filter(
     (r) =>
@@ -87,9 +74,6 @@ export default function Overview() {
           <h1>Campus overview</h1>
           <p className="muted">Manage the entire WMSU Connect platform.</p>
         </div>
-        <button className="btn-soft" onClick={() => setFeatureOpen(true)}>
-          <Plus size={18} /> Add feature
-        </button>
       </div>
 
       <div className="stats">
@@ -227,13 +211,6 @@ export default function Overview() {
           </tbody>
         </table>
       </div>
-
-      {featureOpen && (
-        <AddFeatureModal
-          onClose={() => setFeatureOpen(false)}
-          onSubmit={handleAddFeature}
-        />
-      )}
     </>
   );
 }
