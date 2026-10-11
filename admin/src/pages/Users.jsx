@@ -1,36 +1,90 @@
 import { useState } from "react";
-
-const INITIAL = [
-  {
-    id: 1,
-    initials: "MD",
-    name: "Maria Dela Cruz",
-    email: "student@wmsu.edu.ph",
-    role: "Student",
-    active: true,
-  },
-  {
-    id: 2,
-    initials: "PA",
-    name: "Prof. Ana Reyes",
-    email: "staff@wmsu.edu.ph",
-    role: "Staff",
-    active: true,
-  },
-  {
-    id: 3,
-    initials: "SA",
-    name: "System Administrator",
-    email: "admin@wmsu.edu.ph",
-    role: "Administrator",
-    active: true,
-  },
-];
+import { Search, X, UserPlus, UserMinus } from "lucide-react";
+import { useData, usernameOf } from "../context/DataContext.jsx";
 
 export default function Users() {
-  const [users, setUsers] = useState(INITIAL);
-  const update = (id, patch) =>
-    setUsers(users.map((u) => (u.id === id ? { ...u, ...patch } : u)));
+  const { users, updateUser } = useData();
+  const [query, setQuery] = useState("");
+  const [notice, setNotice] = useState("");
+
+  const q = query.trim().toLowerCase().replace(/^@/, "");
+  const filtered = users.filter(
+    (u) =>
+      !q ||
+      usernameOf(u.email).toLowerCase().includes(q) ||
+      u.name.toLowerCase().includes(q) ||
+      u.email.toLowerCase().includes(q),
+  );
+
+  const staff = filtered.filter((u) => u.role === "Staff");
+  const admins = filtered.filter((u) => u.role === "Administrator");
+  const students = filtered.filter((u) => u.role === "Student");
+
+  const giveStaff = (u) => {
+    updateUser(u.id, { role: "Staff" });
+    setNotice(
+      `${u.name} (@${usernameOf(u.email)}) now has staff access and was moved to the Staff category.`,
+    );
+  };
+
+  const removeStaff = (u) => {
+    updateUser(u.id, { role: "Student", managedPages: [] });
+    setNotice(
+      `${u.name} (@${usernameOf(u.email)}) no longer has staff access and was moved to Students.`,
+    );
+  };
+
+  const row = (u) => (
+    <div className="list-row" key={u.id}>
+      <div className="avatar sm">{u.initials}</div>
+      <div className="grow">
+        <div className="list-name">{u.name}</div>
+        <div className="list-email">
+          <span className="username">@{usernameOf(u.email)}</span> · {u.email}
+        </div>
+        {u.role === "Staff" && u.managedPages.length > 0 && (
+          <div className="page-chips">
+            {u.managedPages.map((p) => (
+              <span className="tag" key={p}>
+                {p}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {u.role === "Student" && (
+        <button className="btn-primary" onClick={() => giveStaff(u)}>
+          <UserPlus size={16} /> Give staff access
+        </button>
+      )}
+      {u.role === "Staff" && (
+        <button className="btn-replace" onClick={() => removeStaff(u)}>
+          <UserMinus size={16} /> Remove staff access
+        </button>
+      )}
+      {u.role === "Administrator" && (
+        <span className="role-chip">Administrator</span>
+      )}
+
+      <button
+        className={"pill-toggle " + (u.active ? "on" : "off")}
+        onClick={() => updateUser(u.id, { active: !u.active })}
+      >
+        {u.active ? "Active" : "Inactive"}
+      </button>
+    </div>
+  );
+
+  const section = (title, list, emptyText) => (
+    <div>
+      <div className="group-head">
+        {title} <span className="count">{list.length}</span>
+      </div>
+      {list.map(row)}
+      {list.length === 0 && <div className="cat-empty">{emptyText}</div>}
+    </div>
+  );
 
   return (
     <>
@@ -39,37 +93,57 @@ export default function Users() {
           <span className="badge">ADMINISTRATOR WORKSPACE</span>
           <h1>Manage users</h1>
           <p className="muted">
-            Manage platform access, account roles, and status.
+            All users in the system. Give a student staff access to move them
+            into the Staff category.
           </p>
         </div>
       </div>
 
+      {notice && <div className="assign-msg ok-msg">{notice}</div>}
+
       <div className="card">
-        <div className="card-title">Active accounts</div>
-        {users.map((u) => (
-          <div className="list-row" key={u.id}>
-            <div className="avatar sm">{u.initials}</div>
-            <div className="grow">
-              <div className="list-name">{u.name}</div>
-              <div className="list-email">{u.email}</div>
-            </div>
-            <select
-              className="select"
-              value={u.role}
-              onChange={(e) => update(u.id, { role: e.target.value })}
-            >
-              <option>Student</option>
-              <option>Staff</option>
-              <option>Administrator</option>
-            </select>
-            <button
-              className={"pill-toggle " + (u.active ? "on" : "off")}
-              onClick={() => update(u.id, { active: !u.active })}
-            >
-              {u.active ? "Active" : "Inactive"}
-            </button>
+        <div className="card-title">
+          All users
+          <small>
+            {filtered.length} {filtered.length === 1 ? "user" : "users"} found
+          </small>
+        </div>
+
+        <div className="users-toolbar">
+          <div className="user-search">
+            <Search size={18} />
+            <input
+              placeholder="Search users by username, name or email..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            {query && (
+              <button
+                className="clear-btn"
+                onClick={() => setQuery("")}
+                aria-label="Clear search"
+              >
+                <X size={16} />
+              </button>
+            )}
           </div>
-        ))}
+        </div>
+
+        {section(
+          "Staff",
+          staff,
+          q ? "No staff match your search." : "No staff members yet.",
+        )}
+        {section(
+          "Administrators",
+          admins,
+          "No administrators match your search.",
+        )}
+        {section(
+          "Students",
+          students,
+          q ? "No students match your search." : "No students.",
+        )}
       </div>
     </>
   );

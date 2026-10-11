@@ -1,63 +1,15 @@
 import { useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
-
-const INITIAL = [
-  {
-    id: 1,
-    code: "CoC",
-    name: "College of Computing Studies",
-    dept: "Information Technology",
-    followers: 5826,
-    active: true,
-  },
-  {
-    id: 2,
-    code: "CoN",
-    name: "College of Nursing",
-    dept: "Nursing",
-    followers: 4612,
-    active: true,
-  },
-  {
-    id: 3,
-    code: "CoA",
-    name: "College of Architecture",
-    dept: "Architecture",
-    followers: 3241,
-    active: true,
-  },
-];
-
-const makeCode = (name) => {
-  if (name.toLowerCase().startsWith("college of ")) {
-    return "Co" + name.slice(11).trim().charAt(0).toUpperCase();
-  }
-  return name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 3)
-    .map((w) => w[0].toUpperCase())
-    .join("");
-};
+import { useData } from "../context/DataContext.jsx";
 
 export default function ManagePages() {
-  const [pages, setPages] = useState(INITIAL);
+  const { pages, users, addPage, removePage, togglePage } = useData();
   const [name, setName] = useState("");
 
   const add = () => {
     const n = name.trim();
     if (!n) return;
-    setPages([
-      ...pages,
-      {
-        id: Date.now(),
-        code: makeCode(n),
-        name: n,
-        dept: "Official page",
-        followers: 0,
-        active: true,
-      },
-    ]);
+    addPage(n);
     setName("");
   };
 
@@ -86,40 +38,40 @@ export default function ManagePages() {
       </div>
 
       <div className="page-grid">
-        {pages.map((p) => (
-          <div className="card page-card" key={p.id}>
-            <div className="page-top">
-              <div className="page-code">{p.code}</div>
-              <div className="grow">
-                <div className="list-name">{p.name}</div>
-                <div className="list-email">
-                  {p.dept} · {p.followers.toLocaleString()} followers
+        {pages.map((p) => {
+          const managers = users
+            .filter((u) => u.managedPages.includes(p.name))
+            .map((u) => u.name);
+          return (
+            <div className="card page-card" key={p.id}>
+              <div className="page-top">
+                <div className="page-code">{p.code}</div>
+                <div className="grow">
+                  <div className="list-name">{p.name}</div>
+                  <div className="list-email">
+                    {p.dept} · {p.followers.toLocaleString()} followers
+                  </div>
                 </div>
+                <button className="ghost" onClick={() => removePage(p.id)}>
+                  <Trash2 size={18} />
+                </button>
               </div>
-              <button
-                className="ghost"
-                onClick={() => setPages(pages.filter((x) => x.id !== p.id))}
-              >
-                <Trash2 size={18} />
-              </button>
+              <div className="page-bottom">
+                <span>
+                  {managers.length
+                    ? "Managed by " + managers.join(", ")
+                    : p.name}
+                </span>
+                <button
+                  className={"pill-toggle " + (p.active ? "on" : "off")}
+                  onClick={() => togglePage(p.id)}
+                >
+                  {p.active ? "Active" : "Inactive"}
+                </button>
+              </div>
             </div>
-            <div className="page-bottom">
-              <span>{p.name}</span>
-              <button
-                className={"pill-toggle " + (p.active ? "on" : "off")}
-                onClick={() =>
-                  setPages(
-                    pages.map((x) =>
-                      x.id === p.id ? { ...x, active: !x.active } : x,
-                    ),
-                  )
-                }
-              >
-                {p.active ? "Active" : "Inactive"}
-              </button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </>
   );
